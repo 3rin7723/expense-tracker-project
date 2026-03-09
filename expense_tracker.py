@@ -151,3 +151,46 @@ def main():
 
 
 main()
+
+def view_expenses():
+    """Show all expenses."""
+    print("\n--- All Expenses ---")
+
+    if not expenses:
+        print("No expenses found.")
+        return
+
+    for index, expense in enumerate(expenses, start=1):
+        print(f"{index}. Category: {expense['category']}, Amount: ${expense['amount']:.2f}, Date: {expense['date']}")
+
+def calculate_total():
+    """Calculate total amount of all expenses."""
+    print("\n--- Total Expenses ---")
+
+    if not expenses:
+        print("No expenses found.")
+        return
+
+    total = 0
+
+    for expense in expenses:
+        total += expense["amount"]
+
+    print(f"Total expenses: ${total:.2f}")
+
+def main():
+    while True:
+        show_menu()
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            add_expense()
+        elif choice == "2":
+            view_expenses()
+        elif choice == "3":
+            calculate_total()
+        elif choice == "4":
+            print("Goodbye.")
+            break
+        else:
+            print("Invalid choice.")
